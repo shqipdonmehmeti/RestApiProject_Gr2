@@ -8,6 +8,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ServiceApi {
 
@@ -18,6 +19,11 @@ interface ServiceApi {
 
     @GET("$API_OBJECTS_ENDPOINT/{id}")
     fun getDeviceById(@Path("id") id : String) : Call<DeviceResponse>
+
+    @GET(API_OBJECTS_ENDPOINT)
+    fun getDeviceByIdWithQueryParams(
+        @Query("id") id : String
+    ) : Call<List<DeviceResponse>>
 
     companion object {
         const val API_OBJECTS_ENDPOINT = "objects"
